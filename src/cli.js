@@ -156,7 +156,8 @@ export async function cli()
         }
     
         if (command == "push") {
-            await sob_push()
+            // await sob_push()
+            console.log("in development")
         }
     
         if (command == "exit") {
