@@ -1,6 +1,7 @@
 {
     "version" : "0.1.0",
     "commands" : [
+        "add",
         "commit",
         "push",
         "exit"

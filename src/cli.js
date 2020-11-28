@@ -24,6 +24,31 @@ async function banner(settings)
     });
 }
 
+async function sob_add()
+{
+    const files = await inquirer.prompt([
+        {
+            type : "input",
+            name : "files",
+            message : "Files to add:"
+        }
+    ])
+
+    const full_add = `${files["files"]}`
+
+    return new Promise(function (resolve, reject) {
+        exec(`git add ${full_add}`, (err, stdout, stderr) => {
+            if (err) {
+                reject(err);
+            } else {
+                if (stdout)
+                    console.log(stdout)
+                resolve({ stdout, stderr });
+            }
+        })
+    });
+}
+
 async function sob_push()
 {
     const origin = await inquirer.prompt([
@@ -48,6 +73,8 @@ async function sob_push()
             if (err) {
                 reject(err);
             } else {
+                if (stdout)
+                    console.log(stdout)
                 resolve({ stdout, stderr });
             }
         })
@@ -80,6 +107,8 @@ async function sob_commit(commit, emoji)
             if (err) {
                 reject(err);
             } else {
+                if (stdout)
+                    console.log(stdout)
                 resolve({ stdout, stderr });
             }
         })
@@ -151,6 +180,11 @@ export async function cli()
     
     while (command != "exit") {
         command = await menu(settings)
+
+        if (command == "add") {
+            await sob_add()
+        }
+
         if (command == "commit") {
             await sob_commit(commit_settings, commit_emoji)
         }
