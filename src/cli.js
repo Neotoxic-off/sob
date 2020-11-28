@@ -3,7 +3,7 @@
 const fs = require("fs")
 const ora = require("ora")
 const inquirer = require("inquirer")
-const { exec } = require("child_process");
+const { execSync } = require("child_process");
 
 const colors = require("./lib/colors");
 
@@ -41,17 +41,21 @@ async function sob_push()
         }
     ])
 
-    exec(`git push ${origin} ${branch}`, (error, stdout, stderr) => {
-        if (error) {
-            console.log(`error: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.log(`stderr: ${stderr}`);
-            return;
-        }
-        console.log(`stdout: ${stdout}`);
-    });
+    return (new Promise(async function(resolve, reject) {
+        const child = execSync(`git push ${origin} ${branch}`, (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+        });
+
+        resolve(child)
+    }))
 }
 
 async function sob_commit(commit, emoji)
@@ -76,18 +80,21 @@ async function sob_commit(commit, emoji)
 
     const full_commit = `${commit_emoji} ${type["type"].toUpperCase()}${commit_separator}${message["message"]}`
 
-    exec(`git commit -m "${full_commit}"`, (error, stdout, stderr) => {
-        if (error) {
-            console.log(`error: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.log(`stderr: ${stderr}`);
-            return;
-        }
-        console.log(`stdout: ${stdout}`);
-    });
+    return (new Promise(async function(resolve, reject) {
+        const child = execSync(`git commit -m "${full_commit}"`, (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+        });
 
+        resolve(child)
+    }))
 }
 
 async function menu(settings)
