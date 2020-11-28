@@ -1,0 +1,19 @@
+{
+    "type" : [
+        "feature",
+        "fix",
+        "bug",
+        "deploy",
+        "documentation",
+        "style",
+        "performance",
+        "test",
+        "core",
+        "init",
+        "library",
+        "revert",
+        "update",
+        "clean",
+        "rework"
+    ]
+}
