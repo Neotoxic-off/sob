@@ -24,7 +24,6 @@
     "esm": "^3.2.25",
     "extend-shallow": "^3.0.2",
     "inquirer": "^7.3.3",
-    "list-git-branches": "^1.0.0",
     "lodash": "^4.17.20",
     "ora": "^5.1.0"
   }

@@ -6,7 +6,6 @@ const inquirer = require("inquirer")
 const { exec } = require("child_process");
 
 const colors = require("./lib/colors");
-const get_branch = require("./tools/branch")
 
 async function banner(settings)
 {
@@ -27,25 +26,22 @@ async function banner(settings)
 
 async function sob_push()
 {
-    const base = await inquirer.prompt([
+    const origin = await inquirer.prompt([
         {
             type : "input",
-            name : "message",
-            message : "Base branch:"
+            name : "origin",
+            message : "Origin:"
         }
     ])
     const branch = await inquirer.prompt([
         {
-            type : "list",
-            name : "type",
-            message : "Branch to commit:",
-            choices : get_branch()
+            type : "input",
+            name : "branch",
+            message : "Branch to push:",
         }
     ])
 
-    const full_commit = `${base} ${branch}`
-
-    exec(`git push ${full_commit}`, (error, stdout, stderr) => {
+    exec(`git push ${origin} ${branch}`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;
