@@ -47,14 +47,8 @@ async function sob_push()
         try {
             resolve(execSync(`git push ${full_push}`, (error, stdout, stderr) => {
                 if (error) {
-                    console.log(`error: ${error.message}`);
-                    return;
+                    throw (error);
                 }
-                if (stderr) {
-                    console.log(`stderr: ${stderr}`);
-                    return;
-                }
-                console.log(`stdout: ${stdout}`);
             }))
         } catch (err) {
             reject(err)
@@ -88,14 +82,8 @@ async function sob_commit(commit, emoji)
         try {
             resolve(execSync(`git commit -m "${full_commit}"`, (error, stdout, stderr) => {
                 if (error) {
-                    console.log(`error: ${error.message}`);
-                    return;
+                    throw (error)
                 }
-                if (stderr) {
-                    console.log(`stderr: ${stderr}`);
-                    return;
-                }
-                console.log(`stdout: ${stdout}`);
             }))
         } catch (err) {
             reject(err)
