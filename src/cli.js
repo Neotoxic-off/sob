@@ -44,19 +44,21 @@ async function sob_push()
     const full_push = `${origin["origin"]} ${branch["branch"]}`
 
     return (new Promise(async function(resolve, reject) {
-        const child = execSync(`git push ${full_push}`, (error, stdout, stderr) => {
-            if (error) {
-                console.log(`error: ${error.message}`);
-                return;
-            }
-            if (stderr) {
-                console.log(`stderr: ${stderr}`);
-                return;
-            }
-            console.log(`stdout: ${stdout}`);
-        });
-
-        resolve(child)
+        try {
+            resolve(execSync(`git push ${full_push}`, (error, stdout, stderr) => {
+                if (error) {
+                    console.log(`error: ${error.message}`);
+                    return;
+                }
+                if (stderr) {
+                    console.log(`stderr: ${stderr}`);
+                    return;
+                }
+                console.log(`stdout: ${stdout}`);
+            }))
+        } catch (err) {
+            reject(err)
+        }
     }))
 }
 
@@ -82,20 +84,22 @@ async function sob_commit(commit, emoji)
 
     const full_commit = `${commit_emoji} ${type["type"].toUpperCase()}${commit_separator}${message["message"]}`
 
-    return (new Promise(async function(resolve, reject) {
-        const child = execSync(`git commit -m "${full_commit}"`, (error, stdout, stderr) => {
-            if (error) {
-                console.log(`error: ${error.message}`);
-                return;
-            }
-            if (stderr) {
-                console.log(`stderr: ${stderr}`);
-                return;
-            }
-            console.log(`stdout: ${stdout}`);
-        });
-
-        resolve(child)
+    return (new Promise(async function(resolve, reject) { 
+        try {
+            resolve(execSync(`git commit -m "${full_commit}"`, (error, stdout, stderr) => {
+                if (error) {
+                    console.log(`error: ${error.message}`);
+                    return;
+                }
+                if (stderr) {
+                    console.log(`stderr: ${stderr}`);
+                    return;
+                }
+                console.log(`stdout: ${stdout}`);
+            }))
+        } catch (err) {
+            reject(err)
+        }
     }))
 }
 
