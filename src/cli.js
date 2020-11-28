@@ -3,7 +3,7 @@
 const fs = require("fs")
 const ora = require("ora")
 const inquirer = require("inquirer")
-const { execSync } = require("child_process");
+const { exec } = require("child_process");
 
 const colors = require("./lib/colors");
 
@@ -43,17 +43,15 @@ async function sob_push()
 
     const full_push = `${origin["origin"]} ${branch["branch"]}`
 
-    return (new Promise(async function(resolve, reject) {
-        try {
-            resolve(execSync(`git push ${full_push}`, (error, stdout, stderr) => {
-                if (error) {
-                    throw (error);
-                }
-            }))
-        } catch (err) {
-            reject(err)
-        }
-    }))
+    return new Promise(function (resolve, reject) {
+        exec(`git push ${full_push}`, (err, stdout, stderr) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve({ stdout, stderr });
+            }
+        })
+    });
 }
 
 async function sob_commit(commit, emoji)
@@ -75,20 +73,17 @@ async function sob_commit(commit, emoji)
             message : "Commit message:"
         }
     ])
-
     const full_commit = `${commit_emoji} ${type["type"].toUpperCase()}${commit_separator}${message["message"]}`
 
-    return (new Promise(async function(resolve, reject) { 
-        try {
-            resolve(execSync(`git commit -m "${full_commit}"`, (error, stdout, stderr) => {
-                if (error) {
-                    throw (error)
-                }
-            }))
-        } catch (err) {
-            reject(err)
-        }
-    }))
+    return new Promise(function (resolve, reject) {
+        exec(`git commit -m "${full_commit}"`, (err, stdout, stderr) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve({ stdout, stderr });
+            }
+        })
+    });
 }
 
 async function menu(settings)
