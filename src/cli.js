@@ -41,8 +41,10 @@ async function sob_push()
         }
     ])
 
+    const full_push = `${origin["origin"]} ${branch["branch"]}`
+
     return (new Promise(async function(resolve, reject) {
-        const child = execSync(`git push ${origin} ${branch}`, (error, stdout, stderr) => {
+        const child = execSync(`git push ${full_push}`, (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
                 return;
