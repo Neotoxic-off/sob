@@ -1,18 +1,18 @@
 {
     "emoji" : {
-        "clean         : Clean part of code"                                  : "🧽",
-        "deploy        : Deploy a new project version"                        : "🚀",
-        "documentation : Add / Update documentation"                          : "📃",
-        "feature       : New part of code that can perform a specific action" : "🌱",
-        "fix           : Correct part of code or mistake"                     : "🔧",
-        "init          : Initialise a new piece of your project"              : "🎀",
-        "library       : Edit library content"                                : "📚",
-        "patch         : Remove bug from the project"                         : "🐜",
-        "performance   : Saves resources and time"                            : "🌡",
-        "revert        : Recovers part of the project"                        : "♻️",
-        "rework        : Overhaul a part of the project"                      : "🔸",
-        "style         : Edit graphical content"                              : "🧁",
-        "test          : Add / Update part of test"                           : "🧪"
+        "clean"         : "🧽",
+        "deploy"        : "🚀",
+        "documentation" : "📃",
+        "feature"       : "🌱",
+        "fix"           : "🔧",
+        "init"          : "🎀",
+        "library"       : "📚",
+        "patch"         : "🐜",
+        "performance"   : "🌡",
+        "revert"        : "♻️",
+        "rework"        : "🔸",
+        "style"         : "🧁",
+        "test"          : "🧪"
     },
     "separator" : " | "
 }

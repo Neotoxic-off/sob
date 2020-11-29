@@ -88,10 +88,10 @@ async function sob_commit(commit, emoji)
             type : "list",
             name : "type",
             message : "Commit type:",
-            choices : commit["full_type"]
+            choices : commit["type"]
         }
     ])
-    const commit_emoji = emoji["emoji"][type["type"]]
+    const commit_emoji = emoji["emoji"][commit["emoji"]]
     const commit_separator = emoji["separator"]
     const message = await inquirer.prompt([
         {
