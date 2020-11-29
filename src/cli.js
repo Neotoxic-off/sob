@@ -101,6 +101,71 @@ async function sob_push()
     });
 }
 
+async function sob_pull()
+{
+    const origin = await inquirer.prompt([
+        {
+            type : "input",
+            name : "origin",
+            message : "Origin:"
+        }
+    ])
+    const branch = await inquirer.prompt([
+        {
+            type : "input",
+            name : "branch",
+            message : "Branch to pull:",
+        }
+    ])
+
+    const full_pull = `${origin["origin"]} ${branch["branch"]}`
+
+    return new Promise(function (resolve, reject) {
+        exec(`git pull ${full_pull}`, (err, stdout, stderr) => {
+            if (err) {
+                resolve(err);
+            } else {
+                if (stdout)
+                    console.log(stdout)
+                resolve({ stdout, stderr });
+            }
+        })
+    });
+}
+/*
+async function sob_rebase()
+{
+    const origin = await inquirer.prompt([
+        {
+            type : "input",
+            name : "origin",
+            message : "Origin:"
+        }
+    ])
+    const branch = await inquirer.prompt([
+        {
+            type : "input",
+            name : "branch",
+            message : "Branch to rebase:",
+        }
+    ])
+
+    const full_push = `${origin["origin"]} ${branch["branch"]}`
+
+    return new Promise(function (resolve, reject) {
+        exec(`git rebase ${full_push}`, (err, stdout, stderr) => {
+            if (err) {
+                resolve(err);
+            } else {
+                if (stdout)
+                    console.log(stdout)
+                resolve({ stdout, stderr });
+            }
+        })
+    });
+}
+*/
+
 async function sob_commit(commit, emoji)
 {
     const type = await inquirer.prompt([
@@ -212,6 +277,10 @@ export async function cli()
         if (command == "push") {
             console.log("\n!! in development !!\n")
             await sob_push()
+        }
+
+        if (command == "pull") {
+            await sob_pull()
         }
     
         if (command == "exit") {

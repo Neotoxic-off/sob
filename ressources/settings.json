@@ -1,13 +1,13 @@
 {
     "banner" : {
         "color" : "yellow",
-        "padding" : 10,
+        "padding" : 5,
         "version" : {
             "message" : {
                 "message" : "Current version: ",
                 "color" : "green"
             },
-            "version" : "0.2.5",
+            "version" : "0.3.0",
             "color" : "cyan"
         },
         "welcome" : {
@@ -19,6 +19,7 @@
         "add",
         "commit",
         "push",
+        "pull",
         "exit"
     ]
 }

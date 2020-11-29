@@ -1,7 +1,7 @@
 # sob
 
 <p align = "center">
-    <img src="https://img.shields.io/badge/0.2.5-purple?style=for-the-badge&logo=V">
+    <img src="https://img.shields.io/badge/0.3.0-purple?style=for-the-badge&logo=V">
     <img src="https://img.shields.io/badge/Status-in%20development-green?style=for-the-badge">
 <p/>
 
@@ -9,21 +9,11 @@
 
 ## Commands
 ```
-✔ CLI loaded
-✔ Commit loaded
-✔ Commit emoji loaded
-
-  ┌──────────────────────────────┐
-  │                              │
-  │       Welcome in SOB         │
-  │    Current version: 0.2.5    │
-  │                              │
-  └──────────────────────────────┘
-
 ? Command: (Use arrow keys)
 ❯ add 
   commit 
-  push 
+  push
+  pull
   exit 
 
 ```
@@ -50,3 +40,10 @@
 ? Origin: origin
 ? Branch to push: master
 ```
+
+### Pull
+```
+? Origin: origin
+? Branch to pull: master
+```
+
