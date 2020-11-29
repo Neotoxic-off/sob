@@ -88,7 +88,7 @@ async function sob_commit(commit, emoji)
             type : "list",
             name : "type",
             message : "Commit type:",
-            choices : commit["type"]
+            choices : commit["full_type"]
         }
     ])
     const commit_emoji = emoji["emoji"][type["type"]]
