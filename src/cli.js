@@ -100,7 +100,7 @@ async function sob_commit(commit, emoji)
             message : "Commit message:"
         }
     ])
-    const full_commit = `${commit_emoji} ${type["type"].toUpperCase()}${commit_separator}${message["message"]}`
+    const full_commit = `${commit_emoji} ${commit["emoji"][type["type"]].toUpperCase()}${commit_separator}${message["message"]}`
 
     return new Promise(function (resolve, reject) {
         exec(`git commit -m "${full_commit}"`, (err, stdout, stderr) => {
