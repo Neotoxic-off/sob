@@ -1,7 +1,7 @@
 # sob
 
 <p align = "center">
-    <img src="https://img.shields.io/badge/0.2.4-purple?style=for-the-badge&logo=V">
+    <img src="https://img.shields.io/badge/0.2.5-purple?style=for-the-badge&logo=V">
     <img src="https://img.shields.io/badge/Status-in%20development-green?style=for-the-badge">
 <p/>
 
@@ -16,7 +16,7 @@
   ┌──────────────────────────────┐
   │                              │
   │       Welcome in SOB         │
-  │    Current version: 0.2.4    │
+  │    Current version: 0.2.5    │
   │                              │
   └──────────────────────────────┘
 
