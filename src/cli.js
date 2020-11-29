@@ -39,7 +39,7 @@ async function sob_add()
     return new Promise(function (resolve, reject) {
         exec(`git add ${full_add}`, (err, stdout, stderr) => {
             if (err) {
-                reject(err);
+                resolve(err);
             } else {
                 if (stdout)
                     console.log(stdout)
@@ -71,7 +71,7 @@ async function sob_push()
     return new Promise(function (resolve, reject) {
         exec(`git push ${full_push}`, (err, stdout, stderr) => {
             if (err) {
-                reject(err);
+                resolve(err);
             } else {
                 if (stdout)
                     console.log(stdout)
@@ -105,7 +105,7 @@ async function sob_commit(commit, emoji)
     return new Promise(function (resolve, reject) {
         exec(`git commit -m "${full_commit}"`, (err, stdout, stderr) => {
             if (err) {
-                reject(err);
+                resolve(err);
             } else {
                 if (stdout)
                     console.log(stdout)
@@ -136,7 +136,7 @@ async function init_settings()
     const spin = ora("Loading CLI").start()
     spin.color = "yellow"
     
-    return (new Promise(async function(resolve, reject) {
+    return (new Promise(function(resolve, reject) {
         var result = JSON.parse(fs.readFileSync("./ressources/settings.json").toString())
         
         resolve(result)
@@ -162,7 +162,7 @@ async function init_emoji()
     const spin = ora("Loading commit emoji").start()
     spin.color = "yellow"
 
-    return (new Promise(async function(resolve, reject) {
+    return (new Promise(function(resolve, reject) {
         var result = JSON.parse(fs.readFileSync("./ressources/commit/emoji.json").toString())
         
         resolve(result)
@@ -190,8 +190,8 @@ export async function cli()
         }
     
         if (command == "push") {
-            await sob_push()
             console.log("\n!! in development !!\n")
+            await sob_push()
         }
     
         if (command == "exit") {
