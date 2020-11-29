@@ -1,5 +1,20 @@
 {
-    "version" : "0.2.4",
+    "banner" : {
+        "color" : "yellow",
+        "padding" : 10,
+        "version" : {
+            "message" : {
+                "message" : "Current version: ",
+                "color" : "green"
+            },
+            "version" : "0.2.5",
+            "color" : "cyan"
+        },
+        "welcome" : {
+            "message" : "Welcome in SOB",
+            "color" : "green"
+        }
+    },
     "commands" : [
         "add",
         "commit",
