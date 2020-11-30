@@ -2,4 +2,4 @@
 
 esm_require = require('esm')(module /*, options*/);
 
-esm_require('../src/cli').cli(process.argv);
+esm_require('../src/cli').cli();

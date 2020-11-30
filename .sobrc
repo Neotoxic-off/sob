@@ -1,0 +1,75 @@
+{
+    "banner" : {
+        "color" : "yellow",
+        "padding" : 5,
+        "version" : {
+            "message" : {
+                "message" : "Current version: ",
+                "color" : "green"
+            },
+            "version" : "0.4.0",
+            "color" : "cyan"
+        },
+        "welcome" : {
+            "message" : "Welcome in SOB",
+            "color" : "green"
+        }
+    },
+    "commands" : [
+        "add",
+        "commit",
+        "push",
+        "pull",
+        "exit"
+    ],
+    "commit" : {
+        "type" : [
+            "clean         : Clean part of code",
+            "deploy        : Deploy a new project version",
+            "documentation : Add / Update documentation",
+            "feature       : New part of code that can perform a specific action",
+            "fix           : Correct part of code or mistake",
+            "init          : Initialise a new piece of your project",
+            "library       : Edit library content",
+            "patch         : Remove bug from the project",
+            "performance   : Saves resources and time",
+            "revert        : Recovers part of the project",
+            "rework        : Overhaul a part of the project",
+            "style         : Edit graphical content",
+            "test          : Add / Update part of test"
+        ],
+        "emoji" : {
+            "clean         : Clean part of code" : "clean",
+            "deploy        : Deploy a new project version" : "deploy" ,
+            "documentation : Add / Update documentation" : "documentation",
+            "feature       : New part of code that can perform a specific action" : "feature",
+            "fix           : Correct part of code or mistake" : "fix",
+            "init          : Initialise a new piece of your project" : "init",
+            "library       : Edit library content" : "library",
+            "patch         : Remove bug from the project" : "patch",
+            "performance   : Saves resources and time" : "performance",
+            "revert        : Recovers part of the project" : "revert",
+            "rework        : Overhaul a part of the project" : "rework",
+            "style         : Edit graphical content" : "style",
+            "test          : Add / Update part of test" : "test"
+        }
+    },
+    "emoji" : {
+        "emoji" : {
+            "clean"         : "🧽",
+            "deploy"        : "🚀",
+            "documentation" : "📃",
+            "feature"       : "🌱",
+            "fix"           : "🔧",
+            "init"          : "🎀",
+            "library"       : "📚",
+            "patch"         : "🐜",
+            "performance"   : "🌡",
+            "revert"        : "♻️",
+            "rework"        : "🔸",
+            "style"         : "🧁",
+            "test"          : "🧪"
+        },
+        "separator" : " | "
+    }
+}

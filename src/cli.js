@@ -5,27 +5,42 @@ const ora = require("ora")
 const inquirer = require("inquirer")
 const { exec } = require("child_process");
 
-const colors = require("./lib/colors");
+function colors(color)
+{
+    const data = {
+        "reset"   : 0,
+        "black"   : 30,
+        "red"     : 31,
+        "green"   : 32,
+        "yellow"  : 33,
+        "blue"    : 34,
+        "magenta" : 35,
+        "cyan"    : 36,
+        "white"   : 37
+    }
+
+    return (`\x1b[${data[color]}m`)
+}
 
 async function banner(settings)
 {
     var promise = new Promise(function(resolve) {
         const banner = settings["banner"]
-            const banner_color = colors.get(banner["color"])
+            const banner_color = colors(banner["color"])
             const banner_padding = banner["padding"]
             const banner_version = banner["version"]
                 const banner_version_message = banner_version["message"]
                     const banner_version_message_message = banner_version_message["message"]
-                    const banner_version_message_color = colors.get(banner_version_message["color"])
+                    const banner_version_message_color = colors(banner_version_message["color"])
                 const banner_version_version = banner_version["version"]
-                const banner_version_color = colors.get(banner_version["color"])
+                const banner_version_color = colors(banner_version["color"])
             const banner_welcome = banner["welcome"]
                 const banner_welcome_message = banner_welcome["message"]
-                const banner_welcome_color = colors.get(banner_welcome["color"])
+                const banner_welcome_color = colors(banner_welcome["color"])
 
         const welcome = `${banner_welcome_color}${banner_welcome_message}${banner_color}`
         const current = `${banner_version_message_color}${banner_version_message_message}${banner_version_color}${banner_version_version}${banner_color}`
-        const reset = colors.get("reset")
+        const reset = colors("reset")
         var spaces = ""
 
         for (let i = 0; i < banner_padding; i++) {
@@ -219,47 +234,18 @@ async function menu(settings)
 async function init_settings()
 {
     const spin = ora("Loading CLI").start()
-    spin.color = "yellow"
     
     return (new Promise(function(resolve, reject) {
-        var result = JSON.parse(fs.readFileSync("./ressources/settings.json").toString())
+        var result = JSON.parse(fs.readFileSync(`${process.env.HOME}/.sobrc`).toString())
         
         resolve(result)
         spin.succeed("CLI loaded")
     }))
 }
 
-async function init_commit()
-{
-    const spin = ora("Loading commit").start()
-    spin.color = "yellow"
-    
-    return (new Promise(async function(resolve, reject) {
-        var result = JSON.parse(fs.readFileSync("./ressources/commit/commit.json").toString())
-        
-        resolve(result)
-        spin.succeed("Commit loaded")
-    }));
-}
-
-async function init_emoji()
-{
-    const spin = ora("Loading commit emoji").start()
-    spin.color = "yellow"
-
-    return (new Promise(function(resolve, reject) {
-        var result = JSON.parse(fs.readFileSync("./ressources/commit/emoji.json").toString())
-        
-        resolve(result)
-        spin.succeed("Commit emoji loaded")
-    }))
-}
-
 export async function cli()
 {
     const settings = await init_settings()
-    const commit_settings = await init_commit()
-    const commit_emoji = await init_emoji()
     await banner(settings)
     var command = null
     
@@ -271,7 +257,7 @@ export async function cli()
         }
 
         if (command == "commit") {
-            await sob_commit(commit_settings, commit_emoji)
+            await sob_commit(settings["commit"], settings["emoji"])
         }
     
         if (command == "push") {

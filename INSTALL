@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+import os
+import shutil
+import subprocess
+
+def rc():
+    print("Installing ressources...")
+    if (os.path.isfile(f"{os.environ['HOME']}/.sobrc")):
+        print(f"Ressources already present: {os.environ['HOME']}/.sobrc")
+    else:
+        shutil.copyfile(".sobrc", f"{os.environ['HOME']}/.sobrc")
+        print("Ressources installed")
+
+def npm():
+    print("Setting up npm...")
+    subprocess.run(["npm", "i"])
+    subprocess.run(["npm", "link"])
+    print("npm setup done")
+
+def main():
+    rc()
+    npm()
+
+main()
+
