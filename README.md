@@ -1,7 +1,7 @@
 # sob
 
 <p align = "center">
-    <img src="https://img.shields.io/badge/0.4.0-purple?style=for-the-badge&logo=V">
+    <img src="https://img.shields.io/badge/0.5.0-purple?style=for-the-badge&logo=V">
     <img src="https://img.shields.io/badge/Status-in%20development-green?style=for-the-badge">
 <p/>
 
@@ -14,6 +14,7 @@
   commit 
   push
   pull
+  checkout
   exit 
 
 ```
@@ -45,5 +46,11 @@
 ```
 ? Origin: origin
 ? Branch to pull: master
+```
+
+### Checkout
+```
+? Origin: origin
+? Branch to switch: master
 ```
 
