@@ -1,7 +1,7 @@
 # sob
 
 <p align = "center">
-    <img src="https://img.shields.io/badge/0.5.0-purple?style=for-the-badge&logo=V">
+    <img src="https://img.shields.io/badge/0.5.1-purple?style=for-the-badge&logo=V">
     <img src="https://img.shields.io/badge/Status-in%20development-green?style=for-the-badge">
 <p/>
 
@@ -39,6 +39,9 @@
 ### Push
 ```
 ? Origin: origin
+? Force: (Use arrow keys)
+❯ Yes
+  No
 ? Branch to push: master
 ```
 

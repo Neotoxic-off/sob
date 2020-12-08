@@ -88,6 +88,17 @@ async function sob_add()
 
 async function sob_push()
 {
+    const force = await inquirer.prompt([
+        {
+            type : "list",
+            name : "force",
+            message : "Force:",
+            choices: [
+                "Yes",
+                "No"
+            ]
+        }
+    ])
     const origin = await inquirer.prompt([
         {
             type : "input",
@@ -103,7 +114,13 @@ async function sob_push()
         }
     ])
 
-    const full_push = `${origin["origin"]} ${branch["branch"]}`
+    var character = ""
+
+    if (force["force"] == "Yes") {
+        character = " -f"
+    }
+
+    const full_push = `${origin["origin"]} ${branch["branch"]} ${character}`
 
     return new Promise(function (resolve, reject) {
         exec(`git push ${full_push}`, (err, stdout, stderr) => {

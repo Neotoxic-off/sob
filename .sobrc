@@ -7,7 +7,7 @@
                 "message" : "Current version: ",
                 "color" : "green"
             },
-            "version" : "0.5.0",
+            "version" : "0.5.1",
             "color" : "cyan"
         },
         "welcome" : {
