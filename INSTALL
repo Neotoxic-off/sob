@@ -8,14 +8,14 @@ def rc():
     print("Installing ressources...")
     if (os.path.isfile(f"{os.environ['HOME']}/.sobrc")):
         print(f"Ressources already present: {os.environ['HOME']}/.sobrc")
-    else:
-        shutil.copyfile(".sobrc", f"{os.environ['HOME']}/.sobrc")
-        print("Ressources installed")
+        os.remove(f"{os.environ['HOME']}/.sobrc")
+    shutil.copyfile(".sobrc", f"{os.environ['HOME']}/.sobrc")
+    print("Ressources installed")
 
 def npm():
     print("Setting up npm...")
-    subprocess.run(["npm", "i"])
-    subprocess.run(["npm", "link"])
+    subprocess.run(["sudo", "npm", "i"])
+    subprocess.run(["sudo", "npm", "link"])
     print("npm setup done")
 
 def main():

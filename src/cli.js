@@ -261,6 +261,22 @@ async function sob_clone()
     }
 }
 
+async function sob_status()
+{
+    return new Promise(function (resolve, reject) {
+        exec(`git status`, (err, stdout, stderr) => {
+            if (err) {
+                console.log(err)
+                resolve(err);
+            } else {
+                if (stdout)
+                    console.log(stdout)
+                resolve({ stdout, stderr });
+            }
+        })
+    });
+}
+
 async function sob_commit(commit, emoji)
 {
     const type = await inquirer.prompt([
@@ -355,6 +371,10 @@ export async function cli()
 
         if (command == "clone") {
             await sob_clone()
+        }
+
+        if (command == "status") {
+            await sob_status()
         }
     
         if (command == "exit") {
