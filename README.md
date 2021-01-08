@@ -1,7 +1,7 @@
 # sob
 
 <p align = "center">
-    <img src="https://img.shields.io/badge/0.8.0-purple?style=for-the-badge&logo=V">
+    <img src="https://img.shields.io/badge/1.0.1-purple?style=for-the-badge&logo=V">
     <img src="https://img.shields.io/badge/Status-in%20development-green?style=for-the-badge">
 <p/>
 
