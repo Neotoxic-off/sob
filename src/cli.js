@@ -18,7 +18,7 @@ const clone = require("./commands/clone")
 const stash = require("./commands/stash")
 const status = require("./commands/status")
 
-async function menu(settings)
+async function menu(commands)
 {
     return (new Promise(async function(resolve, reject) {
         var result = await inquirer.prompt([
@@ -26,7 +26,7 @@ async function menu(settings)
                 type : "list",
                 name : "command",
                 message : "Command:",
-                choices : settings["commands"]
+                choices : commands
             }
         ])
 
@@ -51,9 +51,22 @@ export async function cli()
     const settings = await init_settings()
     await banner(settings)
     var command = null
+
+    const commands = [
+        "add",
+        "commit",
+        "push",
+        "pull",
+        "checkout",
+        "stash",
+        "pop",
+        "template",
+        "status",
+        "exit"
+    ]
     
     while (command != "exit") {
-        command = await menu(settings)
+        command = await menu(commands)
 
         if (command == "add") {
             await add()
@@ -80,6 +93,10 @@ export async function cli()
         }
 
         if (command == "stash") {
+            await stash()
+        }
+
+        if (command == "pop") {
             await stash()
         }
 

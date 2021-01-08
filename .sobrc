@@ -7,7 +7,7 @@
                 "message" : "Current version: ",
                 "color" : "green"
             },
-            "version" : "1.0.1",
+            "version" : "1.1.0",
             "color" : "cyan"
         },
         "welcome" : {
@@ -15,18 +15,6 @@
             "color" : "green"
         }
     },
-    "commands" : [
-        "add",
-        "commit",
-        "status",
-        "push",
-        "clone",
-        "stash",
-        "pull",
-        "checkout",
-	    "template",
-        "exit"
-    ],
     "commit" : {
         "type" : [
             "clean         : Clean part of code",
