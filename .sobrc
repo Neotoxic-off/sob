@@ -7,7 +7,7 @@
                 "message" : "Current version: ",
                 "color" : "green"
             },
-            "version" : "0.7.0",
+            "version" : "0.8.0",
             "color" : "cyan"
         },
         "welcome" : {
@@ -23,6 +23,7 @@
         "clone",
         "pull",
         "checkout",
+	"template",
         "exit"
     ],
     "commit" : {

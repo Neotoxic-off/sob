@@ -136,6 +136,35 @@ async function sob_push()
     });
 }
 
+async function sob_template()
+{
+    const langage = await inquirer.prompt([
+        {
+            type : "list",
+            name : "language",
+            message : "Language:",
+            choices : [
+                "C"
+            ]
+        }
+    ])
+
+    var commands = "mkdir src | mkdir lib | mkdir include | touch .gitignore"
+
+    return new Promise(function (resolve, reject) {
+        exec(commands, (err, stdout, stderr) => {
+            if (err) {
+                console.log(err)
+                resolve(err);
+            } else {
+                if (stdout)
+                    console.log(stdout)
+                resolve({ stdout, stderr });
+            }
+        })
+    });
+}
+
 async function sob_pull()
 {
     const origin = await inquirer.prompt([
@@ -375,6 +404,10 @@ export async function cli()
 
         if (command == "status") {
             await sob_status()
+        }
+
+        if (command == "template") {
+            await sob_template()
         }
     
         if (command == "exit") {
