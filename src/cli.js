@@ -15,6 +15,7 @@ const push = require("./commands/push")
 const template = require("./commands/template")
 const checkout = require("./commands/checkout")
 const clone = require("./commands/clone")
+const stash = require("./commands/stash")
 const status = require("./commands/status")
 
 async function menu(settings)
@@ -76,6 +77,10 @@ export async function cli()
 
         if (command == "clone") {
             await clone()
+        }
+
+        if (command == "stash") {
+            await stash()
         }
 
         if (command == "status") {

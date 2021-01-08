@@ -21,9 +21,10 @@
         "status",
         "push",
         "clone",
+        "stash",
         "pull",
         "checkout",
-	"template",
+	    "template",
         "exit"
     ],
     "commit" : {
