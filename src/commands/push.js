@@ -16,6 +16,7 @@ async function push()
             ]
         }
     ])
+    /*
     const origin = await inquirer.prompt([
         {
             type : "input",
@@ -23,6 +24,7 @@ async function push()
             message : "Origin:"
         }
     ])
+    */
     const branch = await inquirer.prompt([
         {
             type : "input",
@@ -38,8 +40,9 @@ async function push()
     }
 
     const full_push = `${origin["origin"]} ${branch["branch"]} ${character}`
+    const template_origin = `origin ${branch["branch"]} ${character}`
 
-    await execute(`git push ${full_push}`)
+    await execute(`git push ${template_origin}`)
 }
 
 module.exports = push
