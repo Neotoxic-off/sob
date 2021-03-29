@@ -16,15 +16,17 @@ async function push()
             ]
         }
     ])
-    /*
     const origin = await inquirer.prompt([
         {
             type : "input",
             name : "origin",
-            message : "Origin:"
+            message : "Origin:",
+            choices: [
+                "No",
+                "Yes"
+            ]
         }
     ])
-    */
     const branch = await inquirer.prompt([
         {
             type : "input",
@@ -34,15 +36,18 @@ async function push()
     ])
 
     var character = ""
+    var origin_branch = ""
 
     if (force["force"] == "Yes") {
         character = " -f"
     }
+    if (origin["origin"] == "Yes") {
+        origin_branch = "origin"
+    }
 
-    const full_push = `${origin["origin"]} ${branch["branch"]} ${character}`
-    const template_origin = `origin ${branch["branch"]} ${character}`
+    const full_push = `${origin_branch} ${branch["branch"]} ${character}`
 
-    await execute(`git push ${template_origin}`)
+    await execute(`git push ${full_push}`)
 }
 
 module.exports = push
