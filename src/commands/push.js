@@ -18,7 +18,7 @@ async function push()
     ])
     const origin = await inquirer.prompt([
         {
-            type : "input",
+            type : "list",
             name : "origin",
             message : "Origin:",
             choices: [
